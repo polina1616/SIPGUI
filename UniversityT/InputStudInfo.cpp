@@ -121,6 +121,7 @@ bool InputStudInfo::AddStud()
 			setStudInfo();
 			
 			(groupAddStud->isEmpty()) ? groupAddStud->addToBegin(*S) : groupAddStud->sort_elem(*S);
+			groupList->SetCurSel(indexGroup);
 		}
 			
 		
