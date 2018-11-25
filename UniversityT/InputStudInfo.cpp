@@ -77,6 +77,7 @@ BOOL InputStudInfo::OnInitDialog()
 BEGIN_MESSAGE_MAP(InputStudInfo, CDialogEx)
 	ON_BN_CLICKED(IDOK, &InputStudInfo::OnBnClickedOk)
 	ON_BN_CLICKED(IDCANCEL, &InputStudInfo::OnBnClickedCancel)
+	ON_BN_CLICKED(IDNEXT, &InputStudInfo::OnBnClickedNext)
 END_MESSAGE_MAP()
 
 
@@ -152,4 +153,14 @@ void InputStudInfo::OnBnClickedCancel()
 	if (isModify)
 		*S = workStud;
 	CDialogEx::OnCancel();
+}
+
+
+void InputStudInfo::OnBnClickedNext()
+{
+	if (UpdateData() == TRUE)
+	{
+		AddStud();
+		SetActiveSurName();
+	}
 }
