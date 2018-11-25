@@ -78,6 +78,7 @@ BEGIN_MESSAGE_MAP(InputStudInfo, CDialogEx)
 	ON_BN_CLICKED(IDOK, &InputStudInfo::OnBnClickedOk)
 	ON_BN_CLICKED(IDCANCEL, &InputStudInfo::OnBnClickedCancel)
 	ON_BN_CLICKED(IDNEXT, &InputStudInfo::OnBnClickedNext)
+	ON_CBN_SELCHANGE(IDC_CHOOSE_GROUP, &InputStudInfo::OnCbnSelchangeChooseGroup)
 END_MESSAGE_MAP()
 
 
@@ -87,7 +88,7 @@ void InputStudInfo::SetActiveSurName()
 	CWnd *Wnd = GetDlgItem(IDC_EDIT_SURNAME);
 
 	Wnd->SetFocus();
-	((CEdit*)(Wnd))->SetSel(0, S->getSurname().length());
+	((CEdit*)(Wnd))->SetSel(0, surname.GetLength());
 }
 // InputStudInfo message handlers
 
@@ -163,4 +164,10 @@ void InputStudInfo::OnBnClickedNext()
 		AddStud();
 		SetActiveSurName();
 	}
+}
+
+
+void InputStudInfo::OnCbnSelchangeChooseGroup()
+{
+	SetActiveSurName();
 }
