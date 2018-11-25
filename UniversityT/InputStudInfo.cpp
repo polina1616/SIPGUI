@@ -120,6 +120,13 @@ bool InputStudInfo::AddStud()
 
 			setStudInfo();
 			
+            if (groupAddStud->found(*S))
+            {
+                MessageBox(__TEXT("Such a student already exists"), __TEXT("Error"), MB_OK | MB_ICONSTOP);
+                isModify = true;
+                return false;
+            }
+
 			(groupAddStud->isEmpty()) ? groupAddStud->addToBegin(*S) : groupAddStud->sort_elem(*S);
 			groupList->SetCurSel(indexGroup);
 		}

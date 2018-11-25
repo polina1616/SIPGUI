@@ -1,6 +1,7 @@
 #pragma once
 
-
+#include "NamedList.h"
+#include "student.h"
 // CNewFaculty dialog
 
 class CNewFaculty : public CDialog
@@ -14,6 +15,8 @@ public:
 // Dialog Data
 	CString m_Name;
 	CString Title;
+    CString m_SelectedGroupName;
+    NamedList<NamedList<Student>> *faculty;
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_DLG_NEW_FACULTY };
 #endif

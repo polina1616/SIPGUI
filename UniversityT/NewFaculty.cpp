@@ -50,6 +50,8 @@ BOOL CNewFaculty::OnInitDialog()
 	CWnd *Wnd = this->GetDlgItem(IDC_EDIT_NEW_NAME);
 	Wnd->SetFocus();
 	((CEdit*)(Wnd))->SetSel(0, m_Name.GetLength());
+
+    m_SelectedGroupName = m_Name;
 	
 	return FALSE;  // return TRUE unless you set the focus to a control
 				  // EXCEPTION: OCX Property Pages should return FALSE
@@ -61,8 +63,21 @@ void CNewFaculty::OnBnClickedOk()
 	UpdateData(TRUE);
 	m_Name.TrimLeft();
 	m_Name.TrimRight();
-	if (m_Name != __TEXT(""))
-		CDialog::OnOK();
+    NamedList<Student> group(m_Name.GetBuffer());
+    if (m_Name != __TEXT(""))
+    {
+        if (!faculty->isEmpty() && m_Name != m_SelectedGroupName || faculty->found(group))
+        {
+            MessageBox(_T("Such a group already exists!"), _T("Error"), MB_ICONERROR);
+
+            CWnd *Wnd = GetDlgItem(IDC_EDIT_NEW_NAME);
+
+            Wnd->SetFocus();
+            ((CEdit*)(Wnd))->SetSel(0, m_Name.GetLength());
+            return;
+        }
+        CDialog::OnOK();
+    }
 	else
 		this->MessageBox(__TEXT("You must not enter empty string!"), __TEXT("Error"), MB_OK | MB_ICONSTOP);
 }
