@@ -383,7 +383,7 @@ public:
 					} while (rightCur != rightHead && leftCur != leftHead);
 
 					//правый закончился, удаляем оставшиеся элементы левого
-					if (rightCur == right.tail->Next) {
+					if (rightCur == rightHead && leftCur != leftHead) {
 						TElem *del;
 						leftCurPrev->Next = leftHead;
 						tail = leftCurPrev;
