@@ -33,6 +33,7 @@ protected:
 	int birth;
 	double mark;
 	bool isModify;
+	bool isNextActivated;
 
 	virtual BOOL OnInitDialog();
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support

@@ -68,7 +68,7 @@ BOOL InputStudInfo::OnInitDialog()
 	}
 
 	SetActiveSurName();
-
+	isNextActivated = false;
 
 	return false;
 
@@ -153,7 +153,8 @@ void InputStudInfo::OnBnClickedCancel()
 {
 	if (isModify)
 		*S = workStud;
-	CDialogEx::OnCancel();
+
+	(isNextActivated) ? CDialogEx::OnOK() : CDialogEx::OnCancel();
 }
 
 
@@ -163,6 +164,7 @@ void InputStudInfo::OnBnClickedNext()
 	{
 		AddStud();
 		SetActiveSurName();
+		isNextActivated = true;
 	}
 }
 
