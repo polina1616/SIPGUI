@@ -13,18 +13,13 @@ public:
 	virtual ~InputStudInfo();
 
 	CListBox *groupList;
-	CComboBox groupsComboBox;
 	NamedList<NamedList<Student>> *facultyAddStud;
 	NamedList<Student> *groupAddStud;
-
-	CString surname, name, patronymic;
-	int birth;
-	double mark;
 
 	Student *S;
 	Student workStud;
 	int changeFlag;
-	bool isModify;
+	
 
 // Dialog Data
 #ifdef AFX_DESIGN_TIME
@@ -32,6 +27,13 @@ public:
 #endif
 
 protected:
+
+	CComboBox groupsComboBox;
+	CString surname, name, patronymic;
+	int birth;
+	double mark;
+	bool isModify;
+
 	virtual BOOL OnInitDialog();
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	void SetActiveSurName();
