@@ -1,0 +1,25 @@
+# Visual Studio files
+.vs/
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+*.vcxproj
+*.vcxproj.filters
+*.APS
+
+# Any user files
+*.user
+*.txt
+*.log
+
+# Output files
+bin/
+obj/
+build/
+ipch/
+Debug/
+res/
+x64/
+
