@@ -66,7 +66,7 @@ void CNewFaculty::OnBnClickedOk()
     NamedList<Student> group(m_Name.GetBuffer());
     if (m_Name != __TEXT(""))
     {
-        if (!faculty->isEmpty() && m_Name != m_SelectedGroupName || faculty->found(group))
+        if (!faculty->isEmpty() && m_Name == m_SelectedGroupName || faculty->found(group))
         {
             MessageBox(_T("Such a group already exists!"), _T("Error"), MB_ICONERROR);
 
