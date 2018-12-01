@@ -42,14 +42,19 @@ public:
 			mergeSort(head); // сортируем
 							 // ищем конец, чтобы закольцевать
 			TElem *tmp = head;
-			do
-			{
-				tmp = tmp->Next;
-			} while (tmp->Next);
-			tail = tmp;
-			tail->Next = head; // закольцевали список
-							   //cout << "\n Количество рекурсивных вызовов: " << k << "\n";
-			k = 0;
+            if (tmp->Next)
+            {
+                do
+                {
+                    tmp = tmp->Next;
+                } while (tmp->Next);
+                tail = tmp;
+                tail->Next = head; // закольцевали список
+                                   //cout << "\n Количество рекурсивных вызовов: " << k << "\n";
+                k = 0;
+            }
+            else
+                tmp->Next = tmp; // закольцевали список
 		}
 	}
 
@@ -127,6 +132,12 @@ public:
 				cur = cur->Next;
 
 			} while (cur != tail);
+
+            if (cur == tail)
+            {
+                prev->Next = cur->Next;
+                tail = prev;
+            }
 
 			delete cur;
 		}
@@ -498,7 +509,9 @@ private:
 
 	TElem* mergeList(TElem *list1, TElem *list2)
 	{
-		TElem temphead = { 0, NULL }, *tail = &temphead;
+        T t;
+        TElem temphead = { t, NULL };
+        TElem *tail = &temphead;
 		k++;
 		while ((list1 != NULL) && (list2 != NULL)) //пока в подсписке еще есть элементы
 		{
