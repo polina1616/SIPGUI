@@ -50,8 +50,6 @@ BOOL CNewFaculty::OnInitDialog()
 	CWnd *Wnd = this->GetDlgItem(IDC_EDIT_NEW_NAME);
 	Wnd->SetFocus();
 	((CEdit*)(Wnd))->SetSel(0, m_Name.GetLength());
-
-    m_SelectedGroupName = m_Name;
 	
 	return FALSE;  // return TRUE unless you set the focus to a control
 				  // EXCEPTION: OCX Property Pages should return FALSE
