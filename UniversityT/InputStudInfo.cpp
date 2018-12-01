@@ -90,6 +90,14 @@ void InputStudInfo::SetActiveSurName()
 	Wnd->SetFocus();
 	((CEdit*)(Wnd))->SetSel(0, surname.GetLength());
 }
+
+void InputStudInfo::SetActiveName()
+{
+    CWnd *Wnd = GetDlgItem(IDC_EDIT_NAME);
+
+    Wnd->SetFocus();
+    ((CEdit*)(Wnd))->SetSel(0, name.GetLength());
+}
 // InputStudInfo message handlers
 
 
@@ -136,7 +144,7 @@ bool InputStudInfo::AddStud()
 	}
 	isModify = true;
 	MessageBox(__TEXT("Surname or Name is empty"), __TEXT("Error"), MB_OK | MB_ICONSTOP);
-	SetActiveSurName();
+    (surname.GetLength() > 0) ? SetActiveName() : SetActiveSurName();
 	return false;
 
 }
@@ -171,7 +179,6 @@ void InputStudInfo::OnBnClickedNext()
 	if (UpdateData() == TRUE)
 	{
 		AddStud();
-		SetActiveSurName();
 		isNextActivated = true;
 	}
 }

@@ -38,6 +38,7 @@ protected:
 	virtual BOOL OnInitDialog();
 	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV support
 	void SetActiveSurName();
+    void SetActiveName();
 	bool CheckConstr();
 	void TrimAll(CString &Str);
 	bool AddStud();
