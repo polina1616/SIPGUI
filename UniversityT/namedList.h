@@ -49,7 +49,7 @@ public:
 
 	bool operator>(NamedList& right)
 	{
-		return (listName.compare(right) > 0);
+		return (listName.compare(right.listName) > 0);
 	}
 
 	bool operator<(NamedList& right)

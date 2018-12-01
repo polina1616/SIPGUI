@@ -59,7 +59,11 @@ BOOL InputStudInfo::OnInitDialog()
 	if (changeFlag != ADD)
 	{
 		workStud = *S;
-		setStudInfo();
+        surname = S->getSurname().c_str();
+        name = S->getName().c_str();
+        patronymic = S->getLastname().c_str();
+        birth = S->getYearOfBirht();
+        mark = S->getAverMark();
 		isModify = false;
 		GetDlgItem(IDNEXT)->EnableWindow(FALSE);
 		SetDefID(IDOK);
@@ -124,9 +128,11 @@ bool InputStudInfo::AddStud()
 	{
 		int indexGroup = groupsComboBox.GetCurSel();
 		groupAddStud = facultyAddStud->getElemWithID(indexGroup);
+
+        setStudInfo(&workStud);
 		if (changeFlag == ADD) {
 
-			setStudInfo();
+			setStudInfo(S);
 			
             if (groupAddStud->found(*S))
             {
@@ -138,6 +144,9 @@ bool InputStudInfo::AddStud()
 			(groupAddStud->isEmpty()) ? groupAddStud->addToBegin(*S) : groupAddStud->sort_elem(*S);
 			groupList->SetCurSel(indexGroup);
 		}
+
+        setStudInfo(S);
+        groupAddStud->sort();
         SetActiveSurName();
 		
 		return true;
@@ -155,7 +164,7 @@ void InputStudInfo::OnBnClickedOk()
 		EndDialog(IDOK);
 }
 
-void InputStudInfo::setStudInfo()
+void InputStudInfo::setStudInfo(Student *S)
 {
 	S->setSurname(surname.GetBuffer());
 	S->setName(name.GetBuffer());

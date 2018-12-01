@@ -4,7 +4,8 @@
 #define CONST_INCLUDE
 
 
-#define	ADD			1
+#define	ADD         1
+#define CHANGE      2
 
 #define _LEN(VAR, BT)\
 		sizeof(VAR) >> (sizeof(BT) >> 1)

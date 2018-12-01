@@ -42,7 +42,7 @@ protected:
 	bool CheckConstr();
 	void TrimAll(CString &Str);
 	bool AddStud();
-	void setStudInfo();
+	void setStudInfo(Student *S);
 
 	DECLARE_MESSAGE_MAP()
 public:
