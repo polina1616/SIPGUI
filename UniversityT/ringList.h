@@ -135,7 +135,7 @@ public:
 	//delete all
 	void del_all() {
 		if (tail) {
-			TElem *current, *next;
+			TElem *current;
 			current = tail->Next;
 			tail->Next = NULL;
 			tail = current;
@@ -472,6 +472,7 @@ public:
 			}
 			return &elem->Inf;
 		}
+        return NULL;
 	}
 
 
